@@ -10,13 +10,18 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh '''
+                rm -rf .venv
+                python3 -m venv .venv
+                .venv/bin/python -m pip install --upgrade pip
+                .venv/bin/pip install -r requirements.txt
+                '''
             }
         }
-
+        
         stage('Testing') {
             steps {
-                sh 'python3 -m unittest'
+                sh '.venv/bin/python -m unittest'
             }
         }
 
