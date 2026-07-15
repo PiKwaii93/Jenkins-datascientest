@@ -18,7 +18,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Testing') {
             steps {
                 sh '.venv/bin/python -m unittest'
@@ -42,7 +42,7 @@ pipeline {
                 message "Proceed to push to main"
                 ok "Yes"
             }
-        
+
             steps {
                 echo 'User acceptance approved'
             }
@@ -63,7 +63,7 @@ pipeline {
 
                 stage('Merging') {
                     steps {
-                        echo 'Merging done'
+                        sh "echoo 'Merging done'"
                     }
                 }
             }
