@@ -33,11 +33,13 @@ pipeline {
         }
 
         stage('User Acceptance') {
+            input {
+                message "Proceed to push to main"
+                ok "Yes"
+            }
+        
             steps {
-                input {
-                    message "Proceed to push to main"
-                    ok "Yes"
-                }
+                echo 'User acceptance approved'
             }
         }
 
